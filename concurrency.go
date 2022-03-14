@@ -15,14 +15,13 @@ func main() {
 	for _, evilNinja := range evilNinjas {
 		go attack(evilNinja, channel)
 	}
-	checkDone := <- channel
+	checkDone := <-channel
 	fmt.Println(checkDone)
 
 }
 
-
 func attack(target string, attacked chan bool) {
 	fmt.Println("throwing stars at", target)
-	time.Sleep(time.Second *2)
-	attacked  <- true
+	time.Sleep(time.Second * 3)
+	attacked <- true
 }
